@@ -2,13 +2,12 @@
 
 namespace App\Services\Select\Parameter;
 
-use App\Models\Parameter\ParameterValue;
-
+use App\Models\BeltsParameterValue;
 class ParameterSelectService
 {
     public function getAllParameters(int $parameterId)
     {
-        return ParameterValue::select(['id as value', 'parameter_value as label'])->where('parameter_id', $parameterId)->get();
+        return BeltsParameterValue::select(['id as value', 'parameter_value as label'])->where('parameter_id', $parameterId)->get();
     }
 
     /*public function getAllSubCategories(int $categoryId)

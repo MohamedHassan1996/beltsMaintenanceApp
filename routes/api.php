@@ -2,13 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\Dashboard\Auth\AuthController;
-use App\Http\Controllers\Api\V1\Dashboard\Event\EventCalendarController;
-use App\Http\Controllers\Api\V1\Dashboard\Maintenance\MaintenanceRequestController;
 use App\Http\Controllers\Api\V1\Dashboard\Maintenance\OperatorMaintenanceControllerTwo;
 use App\Http\Controllers\Api\V1\Dashboard\Maintenance\OperatorMaintenanceReportController;
-use App\Http\Controllers\Api\V1\Dashboard\Maintenance\PeriodicMaintenanceController;
-use App\Http\Controllers\Api\V1\Dashboard\Maintenance\PeriodicMaintenanceStatsController;
-use App\Http\Controllers\Api\V1\Dashboard\Maintenance\ProductMaintenanceHistoryController;
 use App\Http\Controllers\Api\V1\Dashboard\Maintenance\SendReportToClientController;
 use App\Http\Controllers\Api\V1\Dashboard\User\ChangeForgetPasswordController;
 use App\Http\Controllers\Api\V1\Dashboard\User\UserController;
