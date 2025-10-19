@@ -55,6 +55,8 @@ class OperatorMaintenanceReportController extends Controller implements HasMiddl
                     $path = Storage::disk('public')->putFileAs('maintenance_reports', $report['path'], Str::random(10).'.'.$report['path']->getClientOriginalExtension());
                 }
 
+                $parameterGuids = isset($report['parameterGuids']) ? implode(',', $report['parameterGuids']) : "";
+
 
                 $maintenance = Maintenance::where('guid', $report['maintenanceGuid'])->first();
 
@@ -69,7 +71,8 @@ class OperatorMaintenanceReportController extends Controller implements HasMiddl
                     'number_of_meals' => $report['numberOfMeals'],
                     'note' => $report['note'],
                     'path' => $path,
-                    'report_date' => $maintenanceStartDate
+                    'report_date' => $maintenanceStartDate,
+                    'parameter_guids' => $parameterGuids,
                 ]);
 
             }

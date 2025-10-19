@@ -16,9 +16,10 @@ class MaintenanceReport extends Model
         'is_one_work_period',
         'work_times',
         'number_of_meals',
-        'product_codices',
         'note',
-        'path'
+        'path',
+        'parameter_guids',
+
     ];
 
     protected function casts(): array
