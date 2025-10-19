@@ -7,7 +7,7 @@ class ParameterSelectService
 {
     public function getAllParameters(int $parameterId)
     {
-        return BeltsParameterValue::select(['id as value', 'parameter_value as label'])->where('parameter_id', $parameterId)->get();
+        return BeltsParameterValue::select(['guid as value', 'parameter_value as label'])->where('parameter_id', $parameterId)->get();
     }
 
     /*public function getAllSubCategories(int $categoryId)
