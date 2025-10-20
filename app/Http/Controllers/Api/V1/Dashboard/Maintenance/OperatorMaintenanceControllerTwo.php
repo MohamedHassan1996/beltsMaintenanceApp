@@ -230,22 +230,20 @@ $finalMaintenances = $maintenancesWithIncompleteReports->filter(function ($maint
             ->whereNull('maintenance_details.deleted_at')
             ->get();
 
+            dd( $maintenanceDetails);
+
         $detailsData = [];
 
     $maintenanceDetailTypes = [];
-    $maintenanceTypesArr = [
-        'b0fd95f5-317a-4760-9016-61aaf8b8fa28' => 0,
-        'b273d83b-6312-451f-b50a-be3e1646874c' => 1,
-        'eb8aa9a0-c238-4d98-bad4-7ffb4539fffd' => 2
-    ];
+    $maintenanceDetailTypesGuids = [];
 
     foreach ($maintenanceDetails as $detail) {
 
-    if(!in_array($maintenanceTypesArr[$detail->tipo_intervento_guid], $maintenanceDetailTypes)){
-        $maintenanceDetailTypes[] = $maintenanceTypesArr[$detail->tipo_intervento_guid];
-    }
+        $maintenanceDetailTypes[] = $detail->intervento;
 
-
+        if(!in_array($detail->tipo_intervento_guid, $maintenanceDetailTypesGuids)){
+            $maintenanceDetailTypesGuids[] = $detail->tipo_intervento_guid;
+        }
 
 
     $detailsData[] = [
@@ -262,7 +260,8 @@ $finalMaintenances = $maintenancesWithIncompleteReports->filter(function ($maint
 }
 
             $maintenance->details = $detailsData;
-            //$maintenance->maintenanceDetailTypes = $maintenanceDetailTypes;
+            $maintenance->maintenanceDetailTypes = implode(', ', $maintenanceDetailTypes);
+            $maintenance->maintenanceDetailTypesGuids = implode('##', $maintenanceDetailTypesGuids);
 
                 // Optional: eager load brief maintenance details count or summary if needed
 

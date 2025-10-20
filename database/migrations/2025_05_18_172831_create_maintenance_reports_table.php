@@ -21,6 +21,8 @@ return new class extends Migration
             $table->tinyInteger('number_of_meals')->default(0);
             $table->timestamp('report_date');
             $table->text('note')->nullable();
+            $table->text('parameter_guids')->nullable();
+            $table->text('maintenance_detail_types_guids')->nullable();
             $table->string('path')->nullable();
             $table->boolean('is_sent')->default(0);
             $table->timestamps();

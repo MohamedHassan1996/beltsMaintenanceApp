@@ -73,6 +73,7 @@ class OperatorMaintenanceReportController extends Controller implements HasMiddl
                     'path' => $path,
                     'report_date' => $maintenanceStartDate,
                     'parameter_guids' => $parameterGuids,
+                    'maintenance_detail_types_guids' => isset($report['maintenanceDetailTypesGuids'])? $report['maintenanceDetailTypesGuids'] : ''
                 ]);
 
             }
