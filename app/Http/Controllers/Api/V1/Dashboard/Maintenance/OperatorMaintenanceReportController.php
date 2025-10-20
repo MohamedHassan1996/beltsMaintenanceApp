@@ -50,6 +50,28 @@ class OperatorMaintenanceReportController extends Controller implements HasMiddl
             foreach ($data['reports'] as $key => $report) {
                 $path = null;
 
+                $maintenance = Maintenance::where('guid', $report['maintenanceGuid'])->first();
+
+                if (Carbon::parse($maintenance->start_date)->isSameDay(Carbon::parse($maintenance->end_date))) {
+                    $maintenanceReportExist = MaintenanceReport::where('maintenance_guid', $report['maintenanceGuid'])->exists();
+
+                    if ($maintenanceReportExist) {
+                        continue;
+                    }
+                }else{
+                    $start = Carbon::parse($maintenance->start_date);
+                    $end = Carbon::parse($maintenance->end_date);
+
+                    $numberOfDays = $start->diffInDays($end) + 1;
+
+                    $maintenanceReportExist = MaintenanceReport::where('maintenance_guid', $report['maintenanceGuid'])->count();
+
+                    if ($maintenanceReportExist >= $numberOfDays) {
+                        continue;
+                    }
+
+                }
+
 
                 if(isset($report['path'])) {
                     $path = Storage::disk('public')->putFileAs('maintenance_reports', $report['path'], Str::random(10).'.'.$report['path']->getClientOriginalExtension());
