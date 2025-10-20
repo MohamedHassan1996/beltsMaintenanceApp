@@ -230,6 +230,8 @@ $finalMaintenances = $maintenancesWithIncompleteReports->filter(function ($maint
             ->whereNull('maintenance_details.deleted_at')
             ->get();
 
+            dd( $maintenanceDetails); // --- IGNORE ---
+
         $detailsData = [];
 
     $maintenanceDetailTypes = [];
