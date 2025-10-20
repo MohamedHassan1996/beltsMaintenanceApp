@@ -35,6 +35,12 @@ class SendReportToClientController extends Controller implements HasMiddleware
                     Mail::to('mr10dev10@gmail.com')->send(new SendMaintenanceReportMail(
                     $maintenanceReport->path
                     ));
+                    Mail::to('heshamatef050@gmail.com')->send(new SendMaintenanceReportMail(
+                    $maintenanceReport->path
+                    ));
+                    Mail::to('mohamedelhaddad997@gmail.com')->send(new SendMaintenanceReportMail(
+                    $maintenanceReport->path
+                    ));
                     $maintenanceReport->is_sent = 1;
                     $maintenanceReport->save();
                 }
