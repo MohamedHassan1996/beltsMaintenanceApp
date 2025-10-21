@@ -244,10 +244,16 @@ $finalMaintenances = $maintenancesWithIncompleteReports->filter(function ($maint
             $maintenanceDetailTypesGuids[] = $detail->tipo_intervento_guid;
         }
 
+    $products = implode(', ', DB::connection('beltsMaintenances')
+        ->table('products')
+        ->whereIn('guid', explode('##', $detail->product_guids))
+        ->pluck('description')
+        ->toArray());
 
     $detailsData[] = [
         'guid'         => $detail->guid,
         'intervento'   => $detail->intervento,
+        'products'    => $products,
         'materiale'    => $getParameterValues($detail->materiale_guids),
         'attivita'     => $getParameterValues($detail->attivita_guids),
         'mezziOpera'   => $getParameterValues($detail->mezzi_opera_guids),
