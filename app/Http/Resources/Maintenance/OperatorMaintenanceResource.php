@@ -21,6 +21,7 @@ class OperatorMaintenanceResource extends JsonResource
             'importance' => $this->importance??"",
             'codice' => Carbon::parse($this->start_date)->format('d/m/Y') . ' - ' . $this->codice??"",
             'startDate' => Carbon::parse($this->start_date)->format('d/m/Y'),
+            'endDate' => Carbon::parse($this->end_date)->format('d/m/Y'),
             'companyArriveAt' => Carbon::parse($this->leave_hour)->format('H:i'),
             'clientArriveAt' => Carbon::parse($this->arrive_hour)->format('H:i'),
             'clientName' => $this->regione_sociale,
@@ -37,7 +38,7 @@ class OperatorMaintenanceResource extends JsonResource
             'fineLavoro' => $this->fine_lavoro??'',
             'details' => $this->details,
             'maintenanceDetailTypes' => $this->maintenanceDetailTypes??'',
-            'maintenanceDetailTypesGuids' => $this->maintenanceDetailTypesGuids??'',
+            ''
             //'productBarCodes' => $this->productBarCodes??[]
          ];
     }

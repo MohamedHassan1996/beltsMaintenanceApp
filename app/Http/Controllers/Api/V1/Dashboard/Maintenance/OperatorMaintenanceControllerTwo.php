@@ -137,6 +137,7 @@ $finalMaintenances = $maintenancesWithIncompleteReports->filter(function ($maint
                 'maintenances.mezzo_guids',
                 'maintenances.codice',
                 'maintenances.start_date',
+                'maintenances.end_date',
                 'maintenances.leave_hour',
                 'maintenances.distance',
                 'maintenances.arrive_hour',
