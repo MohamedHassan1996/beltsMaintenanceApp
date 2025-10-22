@@ -39,7 +39,7 @@ class OperatorMaintenanceResource extends JsonResource
             'details' => $this->details,
             'maintenanceDetailTypes' => $this->maintenanceDetailTypes??'',
             'maintenanceDetailTypesGuids' => $this->maintenanceDetailTypesGuids??'',
-            'materialeDeportareGuids' => $maintenance->materialeDeportareGuids??[]
+            'materialeDeportareGuids' => $this->materialeDeportareGuids??[]
          ];
     }
 }
