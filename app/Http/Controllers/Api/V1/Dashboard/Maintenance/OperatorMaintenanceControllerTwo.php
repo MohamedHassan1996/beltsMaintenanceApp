@@ -235,6 +235,8 @@ $finalMaintenances = $maintenancesWithIncompleteReports->filter(function ($maint
 
     $maintenanceDetailTypes = [];
     $maintenanceDetailTypesGuids = [];
+        $materialeDeportareGuids = [];
+
 
     foreach ($maintenanceDetails as $detail) {
 
@@ -249,6 +251,15 @@ $finalMaintenances = $maintenancesWithIncompleteReports->filter(function ($maint
         ->whereIn('guid', explode('##', $detail->product_guids))
         ->pluck('description')
         ->toArray());
+
+    $materialeDeportareDetialsGuids = BeltsParameterValue::whereIn('guid', explode('##', $detail->materiale_guids))->pluck('guid')->toArray();
+
+    foreach($materialeDeportareDetialsGuids as $mdg){
+        if(!in_array($mdg, $materialeDeportareGuids)){
+            $materialeDeportareGuids[] = $mdg;
+        }
+    }
+
 
     $detailsData[] = [
         'guid'         => $detail->guid,
@@ -267,6 +278,7 @@ $finalMaintenances = $maintenancesWithIncompleteReports->filter(function ($maint
             $maintenance->details = $detailsData;
             $maintenance->maintenanceDetailTypes = implode(', ', $maintenanceDetailTypes);
             $maintenance->maintenanceDetailTypesGuids = implode('##', $maintenanceDetailTypesGuids);
+            $maintenance->materialeDeportareGuids = $materialeDeportareGuids;
 
                 // Optional: eager load brief maintenance details count or summary if needed
 

@@ -56,6 +56,7 @@ class SelectService
             'clients' => ['getAllClients', ClientSelectService::class],
             'roles' => ['getAllRoles', RoleSelectService::class],
             'parameters' => ['getAllParameters', ParameterSelectService::class],
+            'materialeDeportare' => ['getAllMaterialeDeportare', ParameterSelectService::class],
         ];
 
         $paramValue = null; // Initialize paramValue

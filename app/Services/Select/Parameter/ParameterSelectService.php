@@ -15,5 +15,10 @@ class ParameterSelectService
         return Category::select(['id as value', 'name as label'])->where('parent_id', $categoryId)->get();
     }*/
 
+    public function getAllMaterialeDeportare(int $parameterId)
+    {
+        return BeltsParameterValue::select(['guid as value', 'parameter_value as label'])->whereNotNull('description')->where('parameter_id', 12 )->get();
+    }
+
 }
 
