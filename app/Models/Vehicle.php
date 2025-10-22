@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     protected $connection = 'beltsMaintenances';
+
+        protected $table = 'vichles';
+
 }
