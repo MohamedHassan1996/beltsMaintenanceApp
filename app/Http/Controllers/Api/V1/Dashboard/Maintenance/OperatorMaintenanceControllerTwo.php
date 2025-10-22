@@ -220,6 +220,10 @@ $finalMaintenances = $maintenancesWithIncompleteReports->filter(function ($maint
                         ->toArray()
                     : [];
 
+                $maintenance->vehicles = Vehicle::selectRaw('GROUP_CONCAT(description SEPARATOR ", ") as descriptions')
+        ->whereIn('guid', explode('##', $maintenance->mezzo_guids ?? ''))
+        ->value('descriptions');
+
         $maintenanceDetails = DB::connection('beltsMaintenances')->table('maintenance_details')
             ->leftJoin('parameter_values as intervento', 'maintenance_details.tipo_intervento_guid', '=', 'intervento.guid')
             ->select(
