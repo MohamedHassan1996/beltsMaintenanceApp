@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\Dashboard\Auth\AuthController;
+use App\Http\Controllers\Api\V1\Dashboard\Maintenance\GenerateReportNumberController;
 use App\Http\Controllers\Api\V1\Dashboard\Maintenance\OperatorMaintenanceControllerTwo;
 use App\Http\Controllers\Api\V1\Dashboard\Maintenance\OperatorMaintenanceReportController;
 use App\Http\Controllers\Api\V1\Dashboard\Maintenance\SendReportToClientController;
@@ -51,6 +52,8 @@ Route::prefix('v1/')->group(function () {
     });
 
     Route::post('send-maintenance-report', SendReportToClientController::class);
+
+    Route::get('generate-report-number', GenerateReportNumberController::class);
 
 
 });

@@ -19,7 +19,8 @@ class MaintenanceReport extends Model
         'note',
         'path',
         'parameter_guids',
-        'maintenance_detail_types_guids'
+        'maintenance_detail_types_guids',
+        'report_number'
     ];
 
     protected function casts(): array

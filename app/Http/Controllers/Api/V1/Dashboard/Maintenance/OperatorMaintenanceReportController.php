@@ -6,11 +6,8 @@ use App\Enums\Maintenance\MaintenanceType;
 use App\Helpers\ApiResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\CalendarEvent;
 use App\Models\Maintenance;
 use App\Models\MaintenanceReport;
-use App\Models\MaintenanceStockItem;
-use App\Models\BeltsParameterValue;
 use Carbon\Carbon;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -95,7 +92,8 @@ class OperatorMaintenanceReportController extends Controller implements HasMiddl
                     'path' => $path,
                     'report_date' => $maintenanceStartDate,
                     'parameter_guids' => $parameterGuids,
-                    'maintenance_detail_types_guids' => isset($report['maintenanceDetailTypesGuids'])? $report['maintenanceDetailTypesGuids'] : ''
+                    'maintenance_detail_types_guids' => isset($report['maintenanceDetailTypesGuids'])? $report['maintenanceDetailTypesGuids'] : '',
+                    'report_number' => isset($report['reportNumber']) ? $report['reportNumber'] : null
                 ]);
 
             }
